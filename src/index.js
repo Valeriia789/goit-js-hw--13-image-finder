@@ -15,7 +15,7 @@ function onSearch (event) {
   apiService.query = event.currentTarget.elements.query.value.trim();
 
   if (apiService.query === '') {
-    return alert ('Write something')
+    return alert('Write something');
   }
 
   apiService.resetPage();

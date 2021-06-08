@@ -41,7 +41,7 @@ export default {
     this.page = 1;
   },
 
-  // без геттера и сеттера во внешнем коде нужно будет обращаться к свойству searchQuery, 
+  // без геттера и сеттера во внешнем коде нужно будет обращаться к свойству searchQuery,
   // а не просто query
   get query () {
     return this.searchQuery;
