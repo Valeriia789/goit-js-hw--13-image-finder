@@ -1,7 +1,7 @@
 import apiService from './js/apiService.js';
 import getRefs from './js/getRefs.js';
 import photoCardTpl from './templates/photoCardTpl.hbs';
-import './js/IntersectionObserver.js';
+// import './js/IntersectionObserver.js';
 import './sass/main.scss';
 
 const refs = getRefs();
@@ -42,15 +42,15 @@ const onEntry = entries => {
     if (entry.isIntersecting && apiService.query !== '') {
       console.log('time to load more img' + Date.now());
       apiService.fetchPhotoCards().then(hits => {
-        clearGalleryContainer();
         appendPhotosMarkup(hits);
+        // console.log(entry.target);
       });
     }
   });
 };
 
 const observer = new IntersectionObserver(onEntry, {
-  rootMargin: '100px',
+  rootMargin: '0px',
 });
 
 observer.observe(refs.ioLoadMore);

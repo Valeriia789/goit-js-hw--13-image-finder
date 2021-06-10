@@ -1,23 +1,29 @@
-import getRefs from './getRefs.js';
-const refs = getRefs();
+// import getRefs from './getRefs.js';
+// const refs = getRefs();
 
-const callback = entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      console.log('hello from callback', entry.target);
-    }
-  });
-};
+// const callback = entries => {
+//   entries.forEach(entry => {
+//     if (entry.isIntersecting) {
+//       console.log('hello from callback', entry.target);
+//     }
+//   });
+// };
 
-const options = {
-  // rootMargin: '100px',
-  // сколько процентов таргета должно въехать в рут
-  // и только тогда регистрируй это пересечение:
-  // threshold: 0.5,
-};
+// const options = {
+//   // rootMargin: '100px',
+//   // сколько процентов таргета должно въехать в рут
+//   // и только тогда регистрируй это пересечение:
+//   // threshold: 0.5,
+// };
 
-const observer = new IntersectionObserver(callback, options);
-observer.observe(refs.ioLoadMore);
+// const observer = new IntersectionObserver(callback, options);
+// observer.observe(refs.ioLoadMore);
+
+
+
+
+
+
 
 // /**
 // * Typical Observer's registration
