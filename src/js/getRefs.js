@@ -5,6 +5,6 @@ export default function getRefs () {
     searchBtn: document.querySelector('.search-btn'),
     gallery: document.querySelector('.gallery'),
     ioLoadMore: document.querySelector('.js-after-gallery-end'),
-    loadMoreBtn: document.querySelector('.loadMoreBtn'),
+    // loadMoreBtn: document.querySelector('.loadMoreBtn'),
   };
 }

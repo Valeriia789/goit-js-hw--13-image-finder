@@ -9,15 +9,14 @@ export default {
   fetchPhotoCards () {
     const url = `${BASE_URL}&q=${this.searchQuery}&page=${this.page}&per_page=12&key=${API_KEY}`;
 
+    // если много параметров, удобнее писать так:
     // const searchParams = new URLSearchParams({
-    //   key: API_KEY,
     //   q: this.searchQuery,
     //   lang: 'en',
     //   per_page: 12,
     //   page: this.page,
     // });
-
-    // const url = `${BASE_URL}&${searchParams}`;
+    // const url = `${BASE_URL}&${searchParams}&key=${API_KEY}`;
 
     return fetch(url)
       .then(response => {

@@ -7,7 +7,7 @@ import './sass/main.scss';
 const refs = getRefs();
 
 refs.searchForm.addEventListener('submit', onSearch);
-refs.loadMoreBtn.addEventListener('click', onLoadMore);
+// refs.loadMoreBtn.addEventListener('click', onLoadMore);
 
 function onSearch (event) {
   event.preventDefault();
@@ -25,20 +25,32 @@ function onSearch (event) {
   });
 }
 
-function onLoadMore () {
-  apiService.fetchPhotoCards().then(appendPhotosMarkup);
-}
+// function onLoadMore () {
+//   apiService.fetchPhotoCards().then(appendPhotosMarkup);
+// }
 
 function appendPhotosMarkup (hits) {
   refs.gallery.insertAdjacentHTML('beforeend', photoCardTpl(hits));
 }
 
-// function appendPhotosMarkup (hits) {
-// при каждом нажатии load more на странице отображается только текущий запрос (12 картинок)
-//   const markupCard = photoCardTpl(hits);
-//   refs.gallery.innerHTML = markupCard;
-// }
-
 function clearGalleryContainer () {
   refs.gallery.innerHTML = '';
 }
+
+const onEntry = entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && apiService.query !== '') {
+      console.log('time to load more img' + Date.now());
+      apiService.fetchPhotoCards().then(hits => {
+        clearGalleryContainer();
+        appendPhotosMarkup(hits);
+      });
+    }
+  });
+};
+
+const observer = new IntersectionObserver(onEntry, {
+  rootMargin: '100px',
+});
+
+observer.observe(refs.ioLoadMore);
